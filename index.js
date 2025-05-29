@@ -29,7 +29,6 @@ app.use("/api/review", reviewRoutes);
 app.use("/api/wishlist", wishlistRoutes);
 app.use("/api/order", orderRoutes);
 
-//server Start:
 const PORT = 8000;
 app.listen(PORT, () => {
   console.log("Server Started at PORT", PORT);

@@ -20,7 +20,4 @@ const wishlistSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// Ensure a product can only be added once to a user's wishlist
-wishlistSchema.index({ userId: 1, "items.productId": 1 }, { unique: true });
-
 module.exports = mongoose.model("Wishlist", wishlistSchema);

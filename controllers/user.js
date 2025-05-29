@@ -10,7 +10,6 @@ const signup = async (req, res) => {
     if (user) {
       return res.status(400).json({ message: "User Already Exists" });
     }
-
     const userData = new User({
       name: req.body.name,
       email: req.body.email,

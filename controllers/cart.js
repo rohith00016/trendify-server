@@ -88,27 +88,9 @@ const decreaseQty = async (req, res) => {
   }
 };
 
-const removeFromCart = async (req, res) => {
-  const { productId, size } = req.body;
-  try {
-    const cart = await Cart.findOne({ userId: req.user._id });
-    if (!cart) return res.status(404).json({ message: "Cart not found" });
-
-    cart.items = cart.items.filter(
-      (item) => !(item.productId.toString() === productId && item.size === size)
-    );
-    await cart.save();
-    await cart.populate("items.productId");
-    res.status(200).json(cart);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-
 module.exports = {
   getCart,
   addToCart,
   increaseQty,
   decreaseQty,
-  removeFromCart,
 };

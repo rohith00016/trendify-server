@@ -50,9 +50,9 @@ const createOrder = async (req, res) => {
   }
 };
 
-const getUserOrders = async (req, res) => {
+const getOrders = async (req, res) => {
   try {
-    const orders = await Order.find({ userId: req.user._id })
+    const orders = await Order.find()
       .sort({ createdAt: -1 })
       .populate("items.productId", "name price image");
     res.json(orders);
@@ -78,6 +78,6 @@ const getOrderById = async (req, res) => {
 
 module.exports = {
   createOrder,
-  getUserOrders,
+  getOrders,
   getOrderById,
 };

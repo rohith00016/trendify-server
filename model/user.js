@@ -20,23 +20,9 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       required: [true, "Password is required"],
-      validate: {
-        validator: function (value) {
-          return /^(?=.*[A-Z])(?=.*\d).{8,}$/.test(value);
-        },
-        message:
-          "Password must be at least 8 characters long and include at least 1 numeric digit and 1 capital letter",
-      },
     },
     mobile: {
       type: String,
-      required: [true, "Mobile number is required"],
-      validate: {
-        validator: function (value) {
-          return /^\d{10}$/.test(value);
-        },
-        message: "Mobile number must be exactly 10 digits",
-      },
     },
     shippingAddress: {
       city: { type: String },
