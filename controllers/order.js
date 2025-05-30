@@ -41,9 +41,6 @@ const createOrder = async (req, res) => {
 
     await order.save();
 
-    cart.items = [];
-    await cart.save();
-
     res.status(201).json(order);
   } catch (error) {
     res.status(400).json({ error: error.message });
