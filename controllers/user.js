@@ -73,7 +73,7 @@ const forgotPassword = async (req, res) => {
       expiresIn: "15m",
     });
 
-    const resetLink = `${process.env.CLIENT_URL}/reset-password?token=${token}`;
+    const resetLink = `http://localhost:5173/reset-password?token=${token}`;
     await sendResetEmail(email, resetLink);
     res.send({ message: "Reset link sent to your email" });
   } catch (err) {
