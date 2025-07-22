@@ -142,6 +142,17 @@ const updateProfile = async (req, res) => {
       return res.status(400).send({ message: "Invalid update fields" });
     }
 
+    if (updates.name) user.name = updates.name;
+    if (updates.email) user.email = updates.email;
+    if (updates.mobile) user.mobile = updates.mobile;
+    if (updates.shippingAddress) {
+      user.shippingAddress = {
+        ...user.shippingAddress,
+        ...updates.shippingAddress,
+      };
+    }
+
+    await user.save();
     res.send({
       message: "Profile updated successfully",
       user: {
